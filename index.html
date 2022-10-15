@@ -136,9 +136,34 @@
         </div>
       </div>
     </section>
+
     <footer id="contact-me">
-      <h2>Contact me</h2>
-      <p>Email@Email.com</p>
+      <h2>Let's build amazing projects!</h2>
+      <div class="contact-container">
+        <div class="contact-me-modal"><a>Message me</a></div>
+      </div>
+
+      <div class="modal hidden">
+        <button class="close-modal">&times;</button>
+        <form action="https://formsubmit.co/jsaique@aol.com" method="POST">
+          <input type="hidden" name="subject" value="New email!" />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            required
+          />
+          <input type="hidden" name="_next" value="thank you link" />
+          <input
+            type="text"
+            name="message"
+            placeholder="write your message here"
+            required
+          />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      <div class="overlay hidden"></div>
     </footer>
 
     <script src="src/app.js"></script>
