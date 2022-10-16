@@ -21,11 +21,6 @@ h2 {
   font-size: 50px;
 }
 
-/* p {
-  font-weight: 300;
-  font-size: 30px;
-} */
-
 nav {
   display: flex;
   justify-content: space-between;
@@ -215,12 +210,18 @@ footer {
     margin: 0px;
   }
 
-  li {
+  li,
+  p {
     font-size: 40px;
   }
 
   .logo {
     display: none;
+  }
+
+  .subtext,
+  h3 {
+    font-size: 2rem;
   }
 }
 
@@ -271,9 +272,10 @@ footer {
 }
 
 .modal {
+  height: 50%;
+  left: 50%;
   position: fixed;
   top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
 
@@ -283,6 +285,10 @@ footer {
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
 }
+
+/* .modal-form {
+  height: 10rem;
+} */
 
 .overlay {
   position: fixed;

@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>John Aries Saique</title>
-    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="src/css/styles.css" />
+    <script type="module" src="src/js/controller.js"></script>
     <link rel="icon" href="src/images/favicon.ico?v=2" />
 
     <!-- Fonts -->
@@ -88,7 +89,7 @@
     <section class="sub-section" id="about-me">
       <div class="information">
         <h2>About me</h2>
-        <p>Hello I am John Aries Saique, I love to create awesome projects!</p>
+        <p>Hello, I am John Aries Saique I love to create awesome projects!</p>
       </div>
       <div class="headshot-container">
         <img
@@ -148,13 +149,15 @@
         <form action="https://formsubmit.co/jsaique@aol.com" method="POST">
           <input type="hidden" name="subject" value="New email!" />
           <input
+            class="modal-form"
             type="email"
             name="email"
-            placeholder="Email Address"
+            placeholder="Your Email"
             required
           />
           <input type="hidden" name="_next" value="thank you link" />
           <input
+            class="modal-form"
             type="text"
             name="message"
             placeholder="write your message here"
@@ -165,7 +168,5 @@
       </div>
       <div class="overlay hidden"></div>
     </footer>
-
-    <script src="src/app.js"></script>
   </body>
 </html>
