@@ -1,0 +1,23 @@
+{
+  "name": "personal-website-project",
+  "description": "This is my first attempt using git and github and also my first personal website project",
+  "version": "1.0.0",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsaique/1st-website.git"
+  },
+  "author": "John Aries",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsaique/1st-website/issues"
+  },
+  "homepage": "https://github.com/jsaique/1st-website#readme",
+  "devDependencies": {
+    "parcel": "^2.7.0"
+  }
+}
