@@ -8,7 +8,6 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.close-modal');
 const contactMe = document.querySelector('.contact-me-modal');
-console.log(contactMe);
 
 const hamburgerButton = document.getElementById('hamburger');
 const navList = document.getElementById('nav-list');

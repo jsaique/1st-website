@@ -286,10 +286,6 @@ footer {
   z-index: 10;
 }
 
-/* .modal-form {
-  height: 10rem;
-} */
-
 .overlay {
   position: fixed;
   top: 0;
