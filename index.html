@@ -146,23 +146,32 @@
 
       <div class="modal hidden">
         <button class="close-modal">&times;</button>
-        <form action="https://formsubmit.co/jsaique@aol.com" method="POST">
+        <form
+          action="https://formsubmit.co/6476eb84bff28e3046f17852f698d893"
+          method="POST"
+        >
           <input type="hidden" name="subject" value="New email!" />
+          <input type="hidden" name="_next" value="thank you link" />
+          <input type="text" id="name" placeholder="Your name" required />
           <input
-            class="modal-form"
+            type="hidden"
+            name="_autoresponse"
+            value="Thank you for reaching out please give me 24 to 48 hours to respond"
+          />
+          <input
             type="email"
             name="email"
-            placeholder="Your Email"
+            id="email"
+            placeholder="Email Address"
             required
           />
-          <input type="hidden" name="_next" value="thank you link" />
-          <input
-            class="modal-form"
+          <textarea
             type="text"
             name="message"
-            placeholder="write your message here"
-            required
-          />
+            id="message"
+            rows="4"
+            placeholder="Your Message"
+          ></textarea>
           <button type="submit">Send</button>
         </form>
       </div>
