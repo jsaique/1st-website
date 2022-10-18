@@ -59,6 +59,7 @@ footer {
 .button {
   border-radius: 25px;
   background-color: coral;
+  cursor: pointer;
   font-weight: 300;
   font-size: 30px;
   height: 55px;
@@ -230,12 +231,12 @@ footer {
 .contact-container {
   display: flex;
   justify-content: space-around;
-  /* padding-left: 50px; */
 }
 
 .contact-me-modal {
   border-radius: 25px;
   background-color: coral;
+  cursor: pointer;
   font-weight: 300;
   font-size: 25px;
   height: 55px;
@@ -256,6 +257,38 @@ footer {
 
 /* Modal */
 
+form {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 2vw 4vw;
+  width: 90%;
+  max-width: 600px;
+}
+
+form input,
+textarea {
+  background-color: #f5f5f5;
+  border: 0;
+  font-size: 16px;
+  margin: 10px 0;
+  padding: 20px;
+  outline: none;
+}
+
+form button {
+  background-color: coral;
+  border: 0;
+  border-radius: 30px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 12px;
+  margin: 20px auto 0;
+  outline: none;
+  width: 150px;
+}
+
 .close-modal {
   position: absolute;
   top: 1.2rem;
@@ -272,12 +305,14 @@ footer {
 }
 
 .modal {
+  align-items: center;
   height: 50%;
+  justify-content: center;
   left: 50%;
   position: fixed;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
+  width: 50%;
 
   background-color: white;
   padding: 6rem;
