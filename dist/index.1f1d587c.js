@@ -1,0 +1,2 @@
+const e=document.querySelector(".modal"),t=document.querySelector(".overlay"),d=document.querySelector(".close-modal"),c=document.querySelector(".contact-me-modal"),n=document.getElementById("hamburger"),o=document.getElementById("nav-list"),s=function(){e.classList.add("hidden"),t.classList.add("hidden")};n.addEventListener("click",(function(){o.classList.toggle("show")})),c.addEventListener("click",(function(){e.classList.remove("hidden"),t.classList.remove("hidden")})),d.addEventListener("click",s),t.addEventListener("click",s);
+//# sourceMappingURL=index.1f1d587c.js.map
