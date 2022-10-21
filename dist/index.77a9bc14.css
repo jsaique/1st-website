@@ -272,6 +272,10 @@ form button {
   font-size: 18px;
 }
 
+form button:hover {
+  background-color: #ef744b;
+}
+
 .close-modal {
   color: #333;
   cursor: pointer;
