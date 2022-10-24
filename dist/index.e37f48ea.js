@@ -532,60 +532,152 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"aenu9":[function(require,module,exports) {
-"use strict";
-// if (module.hot) {
-//   module.hot.accept();
-// }
-const modal = document.querySelector(".modal");
-const overlay = document.querySelector(".overlay");
-const btnCloseModal = document.querySelector(".close-modal");
-const contactMe = document.querySelector(".contact-me-modal");
-const hamburgerButton = document.getElementById("hamburger");
-const navList = document.getElementById("nav-list");
-const navLink = document.querySelector(".nav-links");
-const btnScrollTo = document.querySelector(".button");
-const aboutMe = document.querySelector("#about-me");
-const toggleButton = function() {
-    navList.classList.toggle("show");
-};
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _messageMeViewJs = require("./Views/messageMeView.js");
+var _messageMeViewJsDefault = parcelHelpers.interopDefault(_messageMeViewJs);
+var _hamburgerViewJs = require("./Views/hamburgerView.js");
+var _hamburgerViewJsDefault = parcelHelpers.interopDefault(_hamburgerViewJs);
+var _aboutMeViewJs = require("./Views/aboutMeView.js");
+var _aboutMeViewJsDefault = parcelHelpers.interopDefault(_aboutMeViewJs);
+var _navViewJs = require("./Views/navView.js");
+var _navViewJsDefault = parcelHelpers.interopDefault(_navViewJs);
+if (module.hot) module.hot.accept();
 // Event Listeners
-const showModal = function() {
-    modal.classList.remove("hidden");
-    overlay.classList.remove("hidden");
+const controlNav = function(e) {
+    e.preventDefault();
+    // Matching strategy
+    if (e.target.classList.contains("nav-link")) {
+        const id = e.target.getAttribute("href");
+        document.querySelector(id).scrollIntoView({
+            behavior: "smooth"
+        });
+    }
 };
-const closeModal = function() {
-    modal.classList.add("hidden");
-    overlay.classList.add("hidden");
-};
-const smoothScroll = function(e) {
-    const s1coords = aboutMe.getBoundingClientRect();
+// Smooth Scroll
+const controlsmoothScroll = function() {
+    const s1coords = (0, _aboutMeViewJsDefault.default)._aboutMeId.getBoundingClientRect();
     window.scrollTo({
         left: s1coords.left + window.pageXOffset,
         top: s1coords.top + window.pageYOffset,
         behavior: "smooth"
     });
 };
+// Hamburger Toggle
+const controlToggleButton = function() {
+    (0, _hamburgerViewJsDefault.default)._navList.classList.toggle("show");
+};
+// Modal control
+const controlShowModal = function() {
+    (0, _messageMeViewJsDefault.default)._modal.classList.remove("hidden");
+    (0, _messageMeViewJsDefault.default)._overlay.classList.remove("hidden");
+};
+const controlCloseModal = function() {
+    (0, _messageMeViewJsDefault.default)._modal.classList.add("hidden");
+    (0, _messageMeViewJsDefault.default)._overlay.classList.add("hidden");
+};
+// Overlay
+const controlOverlay = function() {
+    controlCloseModal();
+};
+const init = function() {
+    (0, _navViewJsDefault.default).addHandlerNav(controlNav);
+    (0, _aboutMeViewJsDefault.default).addHandlerSmoothScroll(controlsmoothScroll);
+    (0, _hamburgerViewJsDefault.default).addHandlerToggle(controlToggleButton);
+    (0, _messageMeViewJsDefault.default).addHandlerShowModal(controlShowModal);
+    (0, _messageMeViewJsDefault.default).addHandlerCloseModal(controlCloseModal);
+    (0, _messageMeViewJsDefault.default).addHandlerOverlay(controlOverlay);
+};
+init();
+
+},{"./Views/navView.js":"dI1RD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Views/aboutMeView.js":"hDuuK","./Views/hamburgerView.js":"cMYbW","./Views/messageMeView.js":"3pETx"}],"dI1RD":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
 // Page navigation
 // Event delegation
-// 1.Add the eventlistener to a common parent element
-// 2. Determine which element originated the event
-navLink.addEventListener("click", function(e) {
-    e.preventDefault();
-    // Matching strategy
-    if (e.target.classList.contains("nav-link")) {
-        const id = e.target.getAttribute("href");
-        console.log(id);
-        document.querySelector(id).scrollIntoView({
-            behavior: "smooth"
-        });
+class NavView {
+    // 1.Add the eventlistener to a common parent element
+    // 2. Determine which element originated the event
+    _parentElement = document.querySelector(".nav-links");
+    addHandlerNav(handler) {
+        this._parentElement.addEventListener("click", handler);
     }
-});
-hamburgerButton.addEventListener("click", toggleButton);
-contactMe.addEventListener("click", showModal);
-btnCloseModal.addEventListener("click", closeModal);
-overlay.addEventListener("click", closeModal);
-btnScrollTo.addEventListener("click", smoothScroll);
+}
+exports.default = new NavView();
 
-},{}]},["fA0o9","aenu9"], "aenu9", "parcelRequirec3c7")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"hDuuK":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class AboutMe {
+    _parentElement1 = document.querySelector(".button");
+    _aboutMeId = document.querySelector("#about-me");
+    addHandlerSmoothScroll(handler) {
+        this._parentElement1.addEventListener("click", handler);
+    }
+}
+exports.default = new AboutMe();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cMYbW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class HamburgerToggle {
+    _parentElement = document.getElementById("hamburger");
+    _navList = document.getElementById("nav-list");
+    addHandlerToggle(handler) {
+        this._parentElement.addEventListener("click", handler);
+    }
+}
+exports.default = new HamburgerToggle();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3pETx":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class MessageMe {
+    _parentElement = document.querySelector(".contact-me-modal");
+    _modal = document.querySelector(".modal");
+    _overlay = document.querySelector(".overlay");
+    _btnClose = document.querySelector(".close-modal");
+    addHandlerShowModal(handler) {
+        this._parentElement.addEventListener("click", handler);
+    }
+    addHandlerCloseModal(handler) {
+        this._btnClose.addEventListener("click", handler);
+    }
+    addHandlerOverlay(handler) {
+        this._overlay.addEventListener("click", handler);
+    }
+}
+exports.default = new MessageMe();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fA0o9","aenu9"], "aenu9", "parcelRequirec3c7")
 
 //# sourceMappingURL=index.e37f48ea.js.map
