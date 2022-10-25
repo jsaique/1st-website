@@ -7,8 +7,6 @@ if (module.hot) {
   module.hot.accept();
 }
 
-// Event Listeners
-
 const controlNav = function (e) {
   e.preventDefault();
   // Matching strategy
@@ -19,41 +17,18 @@ const controlNav = function (e) {
   }
 };
 
-// Smooth Scroll
-const controlsmoothScroll = function () {
+// Smooth Scroll About Me
+const controlSmoothScroll = function () {
   const s1coords = aboutMeView._aboutMeId.getBoundingClientRect();
   window.scrollTo({
-    left: s1coords.left + window.pageXOffset,
-    top: s1coords.top + window.pageYOffset,
+    left: s1coords.left + window.scrollX,
+    top: s1coords.top + window.scrollY,
     behavior: 'smooth',
   });
-};
-// Hamburger Toggle
-const controlToggleButton = function () {
-  hamburgerView._navList.classList.toggle('show');
-};
-// Modal control
-const controlShowModal = function () {
-  messageMeView._modal.classList.remove('hidden');
-  messageMeView._overlay.classList.remove('hidden');
-};
-
-const controlCloseModal = function () {
-  messageMeView._modal.classList.add('hidden');
-  messageMeView._overlay.classList.add('hidden');
-};
-
-// Overlay
-const controlOverlay = function () {
-  controlCloseModal();
 };
 
 const init = function () {
   navView.addHandlerNav(controlNav);
-  aboutMeView.addHandlerSmoothScroll(controlsmoothScroll);
-  hamburgerView.addHandlerToggle(controlToggleButton);
-  messageMeView.addHandlerShowModal(controlShowModal);
-  messageMeView.addHandlerCloseModal(controlCloseModal);
-  messageMeView.addHandlerOverlay(controlOverlay);
+  aboutMeView.addHandlerSmoothScroll(controlSmoothScroll);
 };
 init();
