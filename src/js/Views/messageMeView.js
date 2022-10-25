@@ -1,19 +1,26 @@
 class MessageMe {
-  _parentElement = document.querySelector('.contact-me-modal');
+  _messageMe = document.querySelector('.contact-me-modal');
   _modal = document.querySelector('.modal');
   _overlay = document.querySelector('.overlay');
   _btnClose = document.querySelector('.close-modal');
 
-  addHandlerShowModal(handler) {
-    this._parentElement.addEventListener('click', handler);
+  constructor() {
+    this._addHandlerShowWindow();
+    this._addHandlerCloseWindow();
   }
 
-  addHandlerCloseModal(handler) {
-    this._btnClose.addEventListener('click', handler);
+  toggleWindow() {
+    this._modal.classList.toggle('hidden');
+    this._overlay.classList.toggle('hidden');
   }
 
-  addHandlerOverlay(handler) {
-    this._overlay.addEventListener('click', handler);
+  _addHandlerShowWindow() {
+    this._messageMe.addEventListener('click', this.toggleWindow.bind(this));
+  }
+
+  _addHandlerCloseWindow() {
+    this._btnClose.addEventListener('click', this.toggleWindow.bind(this));
+    this._overlay.addEventListener('click', this.toggleWindow.bind(this));
   }
 }
 export default new MessageMe();

@@ -542,7 +542,6 @@ var _aboutMeViewJsDefault = parcelHelpers.interopDefault(_aboutMeViewJs);
 var _navViewJs = require("./Views/navView.js");
 var _navViewJsDefault = parcelHelpers.interopDefault(_navViewJs);
 if (module.hot) module.hot.accept();
-// Event Listeners
 const controlNav = function(e) {
     e.preventDefault();
     // Matching strategy
@@ -553,56 +552,46 @@ const controlNav = function(e) {
         });
     }
 };
-// Smooth Scroll
-const controlsmoothScroll = function() {
+// Smooth Scroll About Me
+const controlSmoothScroll = function() {
     const s1coords = (0, _aboutMeViewJsDefault.default)._aboutMeId.getBoundingClientRect();
     window.scrollTo({
-        left: s1coords.left + window.pageXOffset,
-        top: s1coords.top + window.pageYOffset,
+        left: s1coords.left + window.scrollX,
+        top: s1coords.top + window.scrollY,
         behavior: "smooth"
     });
 };
-// Hamburger Toggle
-const controlToggleButton = function() {
-    (0, _hamburgerViewJsDefault.default)._navList.classList.toggle("show");
-};
-// Modal control
-const controlShowModal = function() {
-    (0, _messageMeViewJsDefault.default)._modal.classList.remove("hidden");
-    (0, _messageMeViewJsDefault.default)._overlay.classList.remove("hidden");
-};
-const controlCloseModal = function() {
-    (0, _messageMeViewJsDefault.default)._modal.classList.add("hidden");
-    (0, _messageMeViewJsDefault.default)._overlay.classList.add("hidden");
-};
-// Overlay
-const controlOverlay = function() {
-    controlCloseModal();
-};
 const init = function() {
     (0, _navViewJsDefault.default).addHandlerNav(controlNav);
-    (0, _aboutMeViewJsDefault.default).addHandlerSmoothScroll(controlsmoothScroll);
-    (0, _hamburgerViewJsDefault.default).addHandlerToggle(controlToggleButton);
-    (0, _messageMeViewJsDefault.default).addHandlerShowModal(controlShowModal);
-    (0, _messageMeViewJsDefault.default).addHandlerCloseModal(controlCloseModal);
-    (0, _messageMeViewJsDefault.default).addHandlerOverlay(controlOverlay);
+    (0, _aboutMeViewJsDefault.default).addHandlerSmoothScroll(controlSmoothScroll);
 };
 init();
 
-},{"./Views/navView.js":"dI1RD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Views/aboutMeView.js":"hDuuK","./Views/hamburgerView.js":"cMYbW","./Views/messageMeView.js":"3pETx"}],"dI1RD":[function(require,module,exports) {
+},{"./Views/messageMeView.js":"3pETx","./Views/hamburgerView.js":"cMYbW","./Views/aboutMeView.js":"hDuuK","./Views/navView.js":"dI1RD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3pETx":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-// Page navigation
-// Event delegation
-class NavView {
-    // 1.Add the eventlistener to a common parent element
-    // 2. Determine which element originated the event
-    _parentElement = document.querySelector(".nav-links");
-    addHandlerNav(handler) {
-        this._parentElement.addEventListener("click", handler);
+class MessageMe {
+    _messageMe = document.querySelector(".contact-me-modal");
+    _modal = document.querySelector(".modal");
+    _overlay = document.querySelector(".overlay");
+    _btnClose = document.querySelector(".close-modal");
+    constructor(){
+        this._addHandlerShowWindow();
+        this._addHandlerCloseWindow();
+    }
+    toggleWindow() {
+        this._modal.classList.toggle("hidden");
+        this._overlay.classList.toggle("hidden");
+    }
+    _addHandlerShowWindow() {
+        this._messageMe.addEventListener("click", this.toggleWindow.bind(this));
+    }
+    _addHandlerCloseWindow() {
+        this._btnClose.addEventListener("click", this.toggleWindow.bind(this));
+        this._overlay.addEventListener("click", this.toggleWindow.bind(this));
     }
 }
-exports.default = new NavView();
+exports.default = new MessageMe();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -634,7 +623,25 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"hDuuK":[function(require,module,exports) {
+},{}],"cMYbW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class HamburgerToggle {
+    _parentElement = document.getElementById("hamburger");
+    _navList = document.getElementById("nav-list");
+    constructor(){
+        this._addHandlerToggle();
+    }
+    toggleHamburger() {
+        this._navList.classList.toggle("show");
+    }
+    _addHandlerToggle() {
+        this._parentElement.addEventListener("click", this.toggleHamburger.bind(this));
+    }
+}
+exports.default = new HamburgerToggle();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hDuuK":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class AboutMe {
@@ -646,37 +653,20 @@ class AboutMe {
 }
 exports.default = new AboutMe();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cMYbW":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dI1RD":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-class HamburgerToggle {
-    _parentElement = document.getElementById("hamburger");
-    _navList = document.getElementById("nav-list");
-    addHandlerToggle(handler) {
+// Page navigation
+// Event delegation
+class NavView {
+    // 1.Add the eventlistener to a common parent element
+    // 2. Determine which element originated the event
+    _parentElement = document.querySelector(".nav-links");
+    addHandlerNav(handler) {
         this._parentElement.addEventListener("click", handler);
     }
 }
-exports.default = new HamburgerToggle();
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3pETx":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-class MessageMe {
-    _parentElement = document.querySelector(".contact-me-modal");
-    _modal = document.querySelector(".modal");
-    _overlay = document.querySelector(".overlay");
-    _btnClose = document.querySelector(".close-modal");
-    addHandlerShowModal(handler) {
-        this._parentElement.addEventListener("click", handler);
-    }
-    addHandlerCloseModal(handler) {
-        this._btnClose.addEventListener("click", handler);
-    }
-    addHandlerOverlay(handler) {
-        this._overlay.addEventListener("click", handler);
-    }
-}
-exports.default = new MessageMe();
+exports.default = new NavView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fA0o9","aenu9"], "aenu9", "parcelRequirec3c7")
 
