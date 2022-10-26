@@ -21,8 +21,8 @@ const controlNav = function (e) {
 const controlSmoothScroll = function () {
   const s1coords = aboutMeView._aboutMeId.getBoundingClientRect();
   window.scrollTo({
-    left: s1coords.left + window.scrollX,
-    top: s1coords.top + window.scrollY,
+    left: s1coords.left + window.pageXOffset,
+    top: s1coords.top + window.pageYOffset,
     behavior: 'smooth',
   });
 };
